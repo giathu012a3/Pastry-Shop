@@ -1,0 +1,29 @@
+.icon-login i{
+font-size: 16px;
+/* border: 1px solid black; */
+background-color: #ccc;
+padding: 9px;
+border-bottom-left-radius: 5px;
+border-top-left-radius: 5px;
+}
+.icon-login{
+    padding: 0;
+}
+.input-login{
+padding: 0;
+margin-left: -6px;
+}
+.login{
+    background: url(../img/bg-login.jpg) no-repeat right top / cover;
+   min-height: 700px;
+
+}
+.table-login{
+    margin-top: 10%;
+}
+.header-login h2{
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 20px;
+    color: black;
+}

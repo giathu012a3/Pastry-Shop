@@ -1,0 +1,53 @@
+.Heading-home {
+    margin: 75px;
+}
+
+/* Mặc định nền trắng */
+.btn {
+    margin: auto;
+}
+
+.btn-more1 {
+    border: 1px solid #663332;
+    padding: 7px 20px;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background-color: #ffffff;
+    /* Màu nền trắng */
+    background-image: linear-gradient(to right, transparent 50%, #663332 50%);
+    background-size: 200% 100%;
+    background-position: right;
+    transition: background-position 1s ease;    
+}
+
+/* Hiệu ứng nền đỏ từ trái sang phải khi đưa chuột vào */
+.btn-more1:hover {
+    background-position: left;
+    border: 1px solid black;
+    color: #663332;
+
+}
+.btn-fix {
+    border: 1px solid #2677c8;
+    padding: 7px 20px;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background-color: #ffffff;
+    /* Màu nền trắng */
+    background-image: linear-gradient(to right, transparent 50%, #2677c8 50%);
+    background-size: 200% 100%;
+    background-position: right;
+    transition: background-position 1s ease;    
+}
+
+/* Hiệu ứng nền đỏ từ trái sang phải khi đưa chuột vào */
+.btn-fix:hover {
+    background-position: left;
+    border: 1px solid black;
+    color: #2677c8;
+
+}

@@ -1,0 +1,27 @@
+.number-input {
+    display: flex;
+    max-width: 100px;
+    margin: 0 auto;
+  }
+  
+  .number-input button {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .number-input input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ddd;
+    outline: none;
+  }
+  
+  .number-input button:hover {
+    background-color: #bbb;
+  }
+  
+  

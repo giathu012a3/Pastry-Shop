@@ -1,0 +1,48 @@
+
+ .logo img{
+    height: 100px;
+    width: 100px;
+ }
+ .logo-header img{
+  height: 46px;
+  width: 46px;
+ }
+ .menu-header > li > a {
+  font-weight: 400; 
+ }
+ .btn-search{
+   height: 40px;
+   width: 572px;
+ }
+ .i-search{
+   background-color: #663332;
+   width:50px ;
+   color: #fff;
+   padding-left: 16px;
+   height: 40px;
+   line-height: 40px;
+ }
+ .menu1{
+  min-width: 160px;
+ }
+ .menu-header .menu1 a{
+  font-size: 14px;
+  font-weight: 400;
+ }
+
+.header-csroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  z-index: 100;
+  /* background-color: #fff; */
+}
+
+.cv {
+  z-index: 200;
+  position: relative;
+  background-color: #fff;
+}
+ 
