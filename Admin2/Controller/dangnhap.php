@@ -1,35 +1,38 @@
 <?php
-$act="dangnhap";
-if(isset($_GET['act']))
-{
-    $act=$_GET['act'];
+$act = "dangnhap";
+if (isset ($_GET['act'])) {
+    $act = $_GET['act'];
 }
 switch ($act) {
     case 'dangnhap':
         include_once "./View/dangnhap.php";
         break;
-    
+
     case 'dangnhap_action':
-       // nhận thông 
-       if($_SERVER['REQUEST_METHOD']=='POST')// if(isset($_POST['txtusername'])&& isset($_POST['txtpassword']))// if(isset($_POST['login']))
-       {
-        $user=$_POST['txtusername'];
-        $pass=$_POST['txtpassword'];
-        $nv=new nhanvien();
-        $check=$nv->getUserAdmin($user,$pass);
-        if($check!==false)
+        // nhận thông 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')// if(isset($_POST['txtusername'])&& isset($_POST['txtpassword']))// if(isset($_POST['login']))
         {
-            $_SESSION['admin']=$check[0];
-            echo '<script> alert("Đăng nhập thành công")</script>';
-            echo '<meta http-equiv=refresh content="0;url=../Admin2/index.php?action=hanghoa"/>';
+            $user = $_POST['txtusername'];
+            $pass = $_POST['txtpassword'];
+            $nv = new nhanvien();
+            $check = $nv->getUserAdmin($user, $pass);
+            if ($check !== false) {
+                $_SESSION['admin'] = $check[0];
+                $_SESSION['idnv'] = $check['idnv'];
+                $_SESSION['hoten'] = $check['hoten'];
+                $_SESSION['roles'] = $check['roles'];
+                echo '<script> alert("Đăng nhập thành công")</script>';
+                echo '<meta http-equiv=refresh content="0;url=../Admin2/index.php?action=hanghoa"/>';
+            } else {
+                echo '<script> alert("Đăng nhập  không thành công")</script>';
+                include_once "./View/dangnhap.php";
+            }
         }
-        else
-        {
-            echo '<script> alert("Đăng nhập  không thành công")</script>';
-            include_once "./View/dangnhap.php";
-        }
-       }
+        break;
+    case 'dangxuat':
+        unset($_SESSION['admin']);
+        echo '<meta http-equiv="refresh" content="0;url=../Admin2/index.php?action=dangnhap"/>';
         break;
 }
-    
+
 ?>

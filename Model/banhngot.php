@@ -8,9 +8,9 @@ class banhngot
         // b1: kết nối được với cơ sở dữ liệu
         $db = new connect();
         //cần lấy cái gì thì truy vấn cái đó
-        $select = "SELECT a.mabanh, a.tenbanh, MIN(b.gia) AS gia, MIN(b.hinhanh) AS hinhanh
+        $select = "SELECT a.mabanh, a.check, a.tenbanh, MIN(b.gia) AS gia, MIN(b.hinhanh) AS hinhanh
         FROM banhngot a
-        JOIN ctbanhngot b ON a.mabanh = b.mabanh
+        JOIN ctbanhngot b ON a.mabanh = b.mabanh and a.check=0
         GROUP BY a.mabanh, a.tenbanh
         ORDER BY a.mabanh DESC
         LIMIT 8";
@@ -24,7 +24,7 @@ class banhngot
         //cần lấy cái gì thì truy vấn cái đó
         $select = "SELECT a.mabanh, a.tenbanh, MIN(b.gia) AS gia, MIN(b.hinhanh) AS hinhanh
         FROM banhngot a
-        JOIN ctbanhngot b ON a.mabanh = b.mabanh
+        JOIN ctbanhngot b ON a.mabanh = b.mabanh and a.check=0
         GROUP BY a.mabanh, a.tenbanh
         ORDER BY a.mabanh DESC";
         $sesult = $db->getList($select);
@@ -37,7 +37,7 @@ class banhngot
         //cần lấy cái gì thì truy vấn cái đó
         $select = "SELECT a.mabanh, a.tenbanh, MIN(b.gia) AS gia, MIN(b.hinhanh) AS hinhanh
         FROM banhngot a
-        JOIN ctbanhngot b ON a.mabanh = b.mabanh
+        JOIN ctbanhngot b ON a.mabanh = b.mabanh and a.check=0
         GROUP BY a.mabanh, a.tenbanh
         ORDER BY a.mabanh DESC LIMIT " . $start . ',' . $limit;
         $sesult = $db->getList($select);
@@ -59,7 +59,7 @@ class banhngot
         FROM banhngot a
         INNER JOIN ctbanhngot b ON a.mabanh = b.mabanh
         INNER JOIN loaibanh c ON b.maloai = c.maloai
-        WHERE b.maloai = " . $idloai . " 
+        WHERE  a.check=0 and b.maloai = " . $idloai . "  
         GROUP BY a.mabanh
         ORDER BY a.mabanh DESC";
         $sesult = $db->getList($select);
@@ -74,7 +74,7 @@ class banhngot
         FROM banhngot a
         INNER JOIN ctbanhngot b ON a.mabanh = b.mabanh
         INNER JOIN loaibanh c ON b.maloai = c.maloai
-        WHERE b.maloai = " . $idloai . " 
+        WHERE a.check=0 and b.maloai = " . $idloai . " 
         GROUP BY a.mabanh
         ORDER BY a.mabanh DESC
         LIMIT " . $start . ',' . $limit;
@@ -116,21 +116,21 @@ class banhngot
     function getBanhNgotIdCZ($id, $size)
     {
         $db = new connect();
-        $select = "select a.hinhanh from ctbanhngot a,sizebanh b WHERE  a.masizebanh=b.masizebanh and a.mabanh=$id and b.masizebanh=$size";
+        $select = "select a.hinhanh from ctbanhngot a,sizebanh b WHERE  a.masizebanh=b.masizebanh and a.check=0 and a.mabanh=$id and b.masizebanh=$size";
         $result = $db->getInstance($select);
         return $result;
     }
     function getBanhNgotIdSize($id, $idsize)
     {
         $db = new connect();
-        $select = "select b.sizebanh from ctbanhngot a,sizebanh b WHERE  a.masizebanh=b.masizebanh and a.mabanh=$id and b.masizebanh=$idsize";
+        $select = "select b.sizebanh from ctbanhngot a,sizebanh b WHERE  a.masizebanh=b.masizebanh and a.mabanh=$id and a.check=0 and b.masizebanh=$idsize";
         $result = $db->getInstance($select);
         return $result;
     }
     function searchBanhNgot($txtsearch)
     {
         $db = new connect();
-        $select = "select a.mabanh,a.tenbanh,b.gia,b.hinhanh  from banhngot a ,ctbanhngot b WHERE a.mabanh=b.MABANH and TENBANH LIKE '%$txtsearch%'";
+        $select = "select a.mabanh,a.tenbanh,b.gia,b.hinhanh  from banhngot a ,ctbanhngot b WHERE a.mabanh=b.MABANH and a.check=0 and TENBANH LIKE '%$txtsearch%'";
         $result = $db->getList($select);
         return $result;
     }

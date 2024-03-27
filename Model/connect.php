@@ -5,7 +5,7 @@ class connect {
         //database
         $dsn = 'mysql:host=localhost;dbname=banhngot';
         $user = 'root';
-        $pass = 'Thu0965845931';
+        $pass = '';
         try {
             $this->db = new PDO($dsn, $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         } catch (\Throwable $th) {

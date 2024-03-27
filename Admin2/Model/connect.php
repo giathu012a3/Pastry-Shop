@@ -6,7 +6,7 @@ class connect
 	{
 		$dsn='mysql:host=localhost;dbname=banhngot';
 		$user='root';
-		$pass='Thu0965845931';
+		$pass='';
 		$this->db=new PDO($dsn,$user,$pass,array(PDO::MYSQL_ATTR_INIT_COMMAND=>"SET NAMES utf8"));
 	}
 //	https://megacode.vn/files/view/php-phuong-thuc-getinstance-la-gi-va-tai-sao-dung-getinstance-4922.html
